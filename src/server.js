@@ -51,6 +51,21 @@ app.use("/api/changepassword", changePasswordRouter);
 const logoutRouter = require("./routes/logout");
 app.use("/api/logout", logoutRouter);
 
+const productsPageRouter = require("./routes/productspage");
+app.use("/api/productspage", productsPageRouter);
+
+const productsRouter = require("./routes/products");
+app.use("/api/products", productsRouter);
+
+const addProductsRouter = require("./routes/addProducts");
+app.use("/api/addProducts", addProductsRouter);
+
+// const displayProductsRouter = require("./routes/displayProducts");
+// app.use("/api/displayProducts", displayProductsRouter);
+
+const userRouter = require("./routes/users");
+app.use("/api/users", userRouter);
+
 app.listen(port, () => {
   console.log(`Server is running at PORT Number ${port}`); //Don't use "" OR '' here
 });

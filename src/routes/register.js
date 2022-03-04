@@ -59,7 +59,7 @@ router.post("", async (req, res) => {
       });
     }
 
-    if (password.length < 2) {
+    if (password.length < 8) {
       return res.json({
         status: "error",
         error: "Password is less than 2 characters",
@@ -109,7 +109,6 @@ router.post("", async (req, res) => {
       status: "error",
       error: "Can't Register due to error. Retry",
     });
-    throw error;
   }
   res.json({ status: "OK" });
 });

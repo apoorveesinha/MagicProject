@@ -11,13 +11,44 @@
     <div class="navbar" style="color:black; background-color:powderblue;">
         <h1><b>Navbar Working</b></h1>
         <a href="/api/home">Home</a>
+        <a href="/api/users">Users</a>
+        <a href="/api/productspage">Products</a>
         <a href="/api/changepassword">Change Password</a>
-        <a href="/api/logout">Logout</a>
+        <a href="/api/logout"><b>Logout</b></a>
     </div>
 
     <div>
         <h2><b>Welcome!</b></h2>
     </div>
+    <!--<form id="logout-form">
+        <input type="submit" value="Logout"/>
+    </form>
+    <script type="text/javascript">
+        const form=document.getElementById("logout-form")
+        form.addEventListener("submit",logoutUser)
+
+
+        async function logoutUser(event)
+        {
+            event.preventDefault()
+            const result = await fetch("/api/logout",{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            }).then((res)=>res.json())
+
+        if (result.status === "OK") {
+            //means everything went fine
+            //console.log("Got the token: ",result.data)
+            //localStorage.setItem("token",result.data)
+            //window.alert("Logged In Successfully");
+            window.alert("Logged Out Successfully");
+            window.location.href="/api/index";
+        } else {
+            window.alert(result.error);
+        }
+    </script>-->
     </center>
 </body>
 </html>

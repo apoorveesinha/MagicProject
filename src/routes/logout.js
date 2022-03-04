@@ -10,14 +10,12 @@ router.get("", auth, async (req, res) => {
     req.user.tokens = req.user.tokens.filter((currElement) => {
       return currElement.token !== req.token;
     });
-
     res.clearCookie("jwt");
     console.log("Logged Out Successfully!");
-
     await req.user.save();
-    res.status(200).render("index");
+    return res.status(200).render("index");
   } catch (error) {
-    res.status(500).send(error);
+    return res.status(500).send(error);
   }
 });
 

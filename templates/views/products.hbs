@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Product</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+
+    </head>
+    <body style="color: aliceblue; background-color:rgb(126, 58, 182);">
+        <center>
+        <div class="navbar" style="color:black; background-color:powderblue">
+            {{>lnavbar}}
+        </div>
+        <div class="container">
+            <div class="header">
+                <h1>Add Product Details</h1>
+            </div>
+            <form class="addProductForm" id="addProductForm" style="color: aliceblue; background-color:rgb(126, 58, 182);">
+                <div class="form-control">
+                    <label for="productName"><b>Product Name: </b></label>
+                    <input type="text" id="productName" name="productName" autocomplete="off" value="" placeholder="Product Name"/>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+
+                <div class="form-control">
+                    <label for="productPrice"><b>Product Price: </b></label>
+                    <input type="text" id="productPrice" name="productPrice" autocomplete="off" value="" placeholder="Product Price"/>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+
+                <div class="form-control">    
+                    <label for="uniqueSKUCode"><b>Unique SKU Code: </b></label>
+                    <input type="text" id="uniqueSKUCode" name="uniqueSKUCode" autocomplete="off" value="" placeholder="Unique SKU Code"/>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+
+                <div class="form-control">    
+                    <label for="modelNo"><b>Model No: </b></label>
+                    <input type="text" id="modelNo" name="modelNo" autocomplete="off" placeholder="Model No"/>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+
+
+                <div class="form-control">    
+                    <label>
+                        <input type="radio" id="y" name="inStock" autocomplete="off" value="Yes" checked="checked"/>
+                        <span>Yes</span>
+                    </label>
+                    <label>
+                        <input type="radio" id="n" name="inStock" autocomplete="off" value="No"/>
+                        <span>No</span>
+                    </label>
+                </div>
+
+                <div class="form-control">    
+                    <label for="productDescription"><b>Product Description: </b></label>
+                    <input type="text" id="productDescription" name="productDescription" minlength="20" maxlength="100" autocomplete="off" placeholder="Product Description" />
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>    
+                
+                <div class="form-control">
+                    <label for="deliveryCharges"><b>Delivery Chargesr: </b></label>
+                    <input type="text" id="deliveryCharges" name="deliveryCharges" autocomplete="off" value="" placeholder="Delivery Charges"/>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>     
+                
+                <input type="submit" value="Add Product" class="submit-btn"/>
+
+            </form>
+
+        </div>
+        <script type="text/javascript">
+            const form=document.getElementById("addProductForm")
+            form.addEventListener("submit",addProduct)
+
+            async function addProduct(event)
+            {
+                event.preventDefault()
+                const productName=document.getElementById("productName").value
+                const productPrice=document.getElementById("productPrice").value
+                const uniqueSKUCode=document.getElementById("uniqueSKUCode").value
+                const modelNo=document.getElementById("modelNo").value
+                var g;
+                if(document.getElementById("y").checked){
+                    g=document.getElementById('y').value
+                }
+                else{
+                    g=document.getElementById('n').value
+                }
+                const inStock=g;
+                const productDescription=document.getElementById("productDescription").value
+                const deliveryCharges=document.getElementById("deliveryCharges").value
+
+                const result = await fetch('/api/products',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({
+                        productName,
+                        productPrice,
+                        uniqueSKUCode,
+                        modelNo,
+                        productDescription,
+                        deliveryCharges,
+                        inStock,
+                    })
+                })
+                .then((res)=>res.json())
+
+                console.log(result);
+                if (result.status === "OK") {
+                    //means everything went fine
+                    window.alert("Product Added successfully");
+                    window.location.href="/api/productsPage";
+                } else {
+                    window.alert(result.error);
+                }
+            }
+        </script>
+    </center>
+    </body>
+</html>

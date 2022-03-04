@@ -43,9 +43,9 @@ userSchema.methods.generateAuthToken = async function () {
 //Converting password into hash
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
-    console.log(`Current Password: ${this.password}`);
+    //console.log(`Current Password: ${this.password}`);
     this.password = await bcrypt.hash(this.password, 10);
-    console.log(`Current Password: ${this.password}`);
+    //console.log(`Current Password: ${this.password}`);
   }
   next();
 });
