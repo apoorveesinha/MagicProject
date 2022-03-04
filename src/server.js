@@ -60,8 +60,8 @@ app.use("/api/products", productsRouter);
 const addProductsRouter = require("./routes/addProducts");
 app.use("/api/addProducts", addProductsRouter);
 
-// const displayProductsRouter = require("./routes/displayProducts");
-// app.use("/api/displayProducts", displayProductsRouter);
+const placeOrderRouter = require("./routes/order");
+app.use("/api/order", placeOrderRouter);
 
 const userRouter = require("./routes/users");
 app.use("/api/users", userRouter);
