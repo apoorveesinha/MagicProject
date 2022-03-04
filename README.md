@@ -1,4 +1,4 @@
-# PitambariWebsite
+# MagicProject
 
 Welcome to this git repository!
 This repository will serve as a beginner mernbackend source code. I have implemented some basic registration, authentication, login, profile and logout features using
@@ -10,7 +10,7 @@ This repository will serve as a beginner mernbackend source code. I have impleme
 
 ## **Want to use this source code?**
 
-To use this code on your system, go to https://github.com/apoorveesinha/PitambariWebsite . Once on the desired link, click on the **Code** dropdown button followed by clicking on the **Download ZIP** option. And here you have the source code to work around with on your system.
+To use this code on your system, go to https://github.com/apoorveesinha/MagicProject . Once on the desired link, click on the **Code** dropdown button followed by clicking on the **Download ZIP** option. And here you have the source code to work around with on your system.
 
 ### **Usage**
 
@@ -34,8 +34,12 @@ Begin with registering yourself on the Registration form. This will generate a j
 
 To change your password click on the **_Change Password_** hyperlink on the site which will redirect you accordingly. Enter your new password and confirm it to finally apply changes and modify your password.
 
-To view all the registered users, you will have to first register yourself and login to get to the profile page. There an hyperlink of "USERS" will be available which upon clicking will show you all the registered users' username only.
+To view all the registered users, you will have to first register yourself and login to get to the profile page. There an hyperlink of "Users" will be available which upon clicking will show you all the registered users' username only.
 If you want to find a specific user then write their username in the address bar ,say, for example "http://localhost:3000/api/users/shivani" and the username and registered emailID of the searched user will be displayed if only the user exists. Else "No user found" will be displayed.
+
+To view all the registered products, you will have to first register yourself and login to get to the profile page. There an hyperlink of "Products" will be available which upon clicking will show you all the four options viz "Show Products", "Place Order", "Show All Orders" and "Add Product". Upon clicking "Show Products", all the registered products will be displayed. "Place Order" will present a simple form to add product name and quantity to place order. "Show All Orders" will show all the orders made by a registered user. "Add Product" will enable admin to add products to the sites database for customer use.
+
+If you want to find a specific product then write its product name in the address bar ,say, for example "http://localhost:3000/api/products/pen" and the details of the searched product will be displayed as per availability. Else "No product found" will be displayed.
 
 Upon logging out, you will not be logged out from other devices you've signed in on using this username and password.
 
